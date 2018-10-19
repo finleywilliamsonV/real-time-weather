@@ -7,14 +7,20 @@ import PropTypes from 'prop-types';
 class ForecastDisplay extends React.PureComponent {
   static propTypes = {
     weatherData: PropTypes.object,
+    locationFound: PropTypes.string,
   }
   /**
    * Renders the component
    * @return {String} html to be rendered
    */
   render() {
-    console.log('Rendered', this);
-    return (<h1>[1] [2] [3] [4] [5] [6] [7]</h1>);
+    console.log('\nRendered', this);
+    return (
+      <div>
+        <h1>{this.props.locationFound}</h1>
+        <h1>[1] [2] [3] [4] [5] [6] [7]</h1>
+      </div>
+    );
   }
 }
 

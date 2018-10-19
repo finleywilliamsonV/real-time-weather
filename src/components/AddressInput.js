@@ -20,7 +20,7 @@ class AddressInput extends React.PureComponent {
   }
 
   render() {
-    console.log('Rendered', this);
+    console.log('\nRendered', this);
     return (
       <h1>Enter Address:
         <input onChange={this.onChange}></input>

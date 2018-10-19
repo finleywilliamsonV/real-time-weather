@@ -6,7 +6,7 @@ import 'isomorphic-fetch';
 import Title from '../../components/Title';
 import AddressInput from '../../components/AddressInput';
 import ForecastDisplay from '../../components/ForecastDisplay';
-// import AddressError from '../../components/AddressError';
+import AddressError from '../../components/AddressError';
 import WeatherDataRequest from '../../components/WeatherDataRequest';
 
 import './App.css';
@@ -14,6 +14,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     address: null,
+    locationFound: null,
     mountFetching: false,
     mountAddressError: false,
     weatherData: undefined,
@@ -26,6 +27,12 @@ class App extends React.Component {
 
   setAddressValue = (add) => {
     this.setState({ address: add });
+    this.setState({ mountAddressError: false });
+  }
+
+  setLocationFound = locationFound => {
+    this.setState({ locationFound });
+    console.log('LOCATION FOUND:', this.state.locationFound);
   }
 
   updateWeatherData = (newData) => {
@@ -41,12 +48,12 @@ class App extends React.Component {
     }
   }
 
-  mountFetching = bool => {
+  setMountFetching = bool => {
     this.setState({ mountFetching: bool });
   }
 
-  mountAddressError = bool => {
-
+  setMountAddressError = bool => {
+    this.setState({ mountAddressError: bool });
   }
 
   /**
@@ -81,8 +88,14 @@ class App extends React.Component {
           <div className='col'>
             {
               this.state.weatherData ?
-                <ForecastDisplay weatherData={this.state.weatherData}/>
-                : null
+                <ForecastDisplay
+                  locationFound={this.state.locationFound}
+                  weatherData={this.state.weatherData}
+                />
+
+                : this.state.mountAddressError ?
+                  <AddressError />
+                  : null
             }
           </div>
         </div>
@@ -101,9 +114,11 @@ class App extends React.Component {
         {
           mountFetching ?
             <WeatherDataRequest
+              address={address}
+              setMountFetching={this.setMountFetching}
+              setLocationFound={this.setLocationFound}
+              setMountAddressError={this.setMountAddressError}
               updateWeatherData={this.updateWeatherData}
-              data={address}
-              mountFetching={this.mountFetching}
             />
             : null
         }

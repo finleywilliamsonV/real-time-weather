@@ -9,7 +9,7 @@ class Title extends React.PureComponent {
    * @return {String} html to be rendered
    */
   render() {
-    console.log('Rendered', this);
+    console.log('\nRendered', this);
     return (<h1>Real-Time Weather</h1>);
   }
 }

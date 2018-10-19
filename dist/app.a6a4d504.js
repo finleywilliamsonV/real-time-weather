@@ -27966,7 +27966,7 @@ function (_React$PureComponent) {
      * @return {String} html to be rendered
      */
     value: function render() {
-      console.log('Rendered', this);
+      console.log('\nRendered', this);
       return _react.default.createElement("h1", null, "Real-Time Weather");
     }
   }]);
@@ -28046,7 +28046,7 @@ function (_React$PureComponent) {
   _createClass(AddressInput, [{
     key: "render",
     value: function render() {
-      console.log('Rendered', this);
+      console.log('\nRendered', this);
       return _react.default.createElement("h1", null, "Enter Address:", _react.default.createElement("input", {
         onChange: this.onChange
       }), _react.default.createElement("button", {
@@ -28117,8 +28117,8 @@ function (_React$PureComponent) {
   _createClass(ForecastDisplay, [{
     key: "render",
     value: function render() {
-      console.log('Rendered', this);
-      return _react.default.createElement("h1", null, "[1] [2] [3] [4] [5] [6] [7]");
+      console.log('\nRendered', this);
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.locationFound), _react.default.createElement("h1", null, "[1] [2] [3] [4] [5] [6] [7]"));
     }
   }]);
 
@@ -28126,7 +28126,8 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 _defineProperty(ForecastDisplay, "propTypes", {
-  weatherData: _propTypes.default.object
+  weatherData: _propTypes.default.object,
+  locationFound: _propTypes.default.string
   /**
    * Renders the component
    * @return {String} html to be rendered
@@ -28136,7 +28137,60 @@ _defineProperty(ForecastDisplay, "propTypes", {
 
 var _default = ForecastDisplay;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"node_modules/date-fns/is_date/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"src/components/AddressError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var AddressError =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AddressError, _React$Component);
+
+  function AddressError() {
+    _classCallCheck(this, AddressError);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AddressError).apply(this, arguments));
+  }
+
+  _createClass(AddressError, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("h2", null, "INVALID ADDRESS");
+    }
+  }]);
+
+  return AddressError;
+}(_react.default.Component);
+
+var _default = AddressError;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"node_modules/date-fns/is_date/index.js":[function(require,module,exports) {
 /**
  * @category Common Helpers
  * @summary Is the given argument an instance of Date?
@@ -29450,7 +29504,8 @@ function (_React$Component) {
   _createClass(WeatherDataRequest, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.mountFetching(false);
+      this.props.setMountFetching(false);
+      this.props.setMountAddressError(false);
       this.fetchLatLong();
     }
   }, {
@@ -29459,14 +29514,14 @@ function (_React$Component) {
       var _fetchLatLong = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
-        var data, response, json, results, geometry;
+        var address, response, json, locationFound, results, geometry;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                data = encodeURIComponent(this.props.data);
+                address = encodeURIComponent(this.props.address);
                 _context.next = 3;
-                return fetch("https://api.opencagedata.com/geocode/v1/json?q=".concat(data, "&key=501ef522ca0f4c06ae2b5410168d07eb"));
+                return fetch("https://api.opencagedata.com/geocode/v1/json?q=".concat(address, "&key=501ef522ca0f4c06ae2b5410168d07eb"));
 
               case 3:
                 response = _context.sent;
@@ -29475,11 +29530,29 @@ function (_React$Component) {
 
               case 6:
                 json = _context.sent;
+                // CHECK IF ANY VIABLE RESULTS
+                console.log('latLong data', json);
+
+                if (!(json.results.length === 0)) {
+                  _context.next = 13;
+                  break;
+                }
+
+                this.props.updateWeatherData(null);
+                this.props.setMountAddressError(true);
+                console.log('FAILED');
+                return _context.abrupt("return");
+
+              case 13:
+                // STORE FOUND LOCATION IN STATE
+                locationFound = json.results[0].formatted;
+                this.props.setLocationFound(locationFound); // extract geometry and pass into fetchWeatherData()
+
                 results = json.results && json.results[0] && json.results[0];
                 geometry = results.geometry && results.geometry.lat && results.geometry.lng && results.geometry;
                 return _context.abrupt("return", this.fetchWeatherData(geometry));
 
-              case 10:
+              case 18:
               case "end":
                 return _context.stop();
             }
@@ -29513,6 +29586,7 @@ function (_React$Component) {
 
               case 6:
                 json = _context2.sent;
+                console.log('weather data', json);
                 results = json.daily && json.daily.data && json.daily.data;
                 normalizedData = results.reduce(function (acc, curr) {
                   var time = convertTimeStamp(curr.time);
@@ -29526,7 +29600,7 @@ function (_React$Component) {
                 }, {});
                 return _context2.abrupt("return", this.props.updateWeatherData(normalizedData));
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
@@ -29541,7 +29615,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('Rendered', this);
+      console.log('\nRendered', this);
       return null;
     }
   }]);
@@ -29550,9 +29624,11 @@ function (_React$Component) {
 }(_react.default.Component);
 
 _defineProperty(WeatherDataRequest, "propTypes", {
-  updateWeatherData: _propTypes.default.func.isRequired,
-  mountFetching: _propTypes.default.func.isRequired,
-  data: _propTypes.default.string
+  address: _propTypes.default.string,
+  setMountFetching: _propTypes.default.func.isRequired,
+  setLocationFound: _propTypes.default.func.isRequired,
+  setMountAddressError: _propTypes.default.func.isRequired,
+  updateWeatherData: _propTypes.default.func.isRequired
 });
 
 function convertTimeStamp(timeStamp) {
@@ -29659,6 +29735,8 @@ var _AddressInput = _interopRequireDefault(require("../../components/AddressInpu
 
 var _ForecastDisplay = _interopRequireDefault(require("../../components/ForecastDisplay"));
 
+var _AddressError = _interopRequireDefault(require("../../components/AddressError"));
+
 var _WeatherDataRequest = _interopRequireDefault(require("../../components/WeatherDataRequest"));
 
 require("./App.css");
@@ -29705,6 +29783,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       address: null,
+      locationFound: null,
       mountFetching: false,
       mountAddressError: false,
       weatherData: undefined,
@@ -29715,6 +29794,18 @@ function (_React$Component) {
       _this.setState({
         address: add
       });
+
+      _this.setState({
+        mountAddressError: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setLocationFound", function (locationFound) {
+      _this.setState({
+        locationFound: locationFound
+      });
+
+      console.log('LOCATION FOUND:', _this.state.locationFound);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateWeatherData", function (newData) {
@@ -29735,13 +29826,17 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountFetching", function (bool) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setMountFetching", function (bool) {
       _this.setState({
         mountFetching: bool
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mountAddressError", function (bool) {});
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setMountAddressError", function (bool) {
+      _this.setState({
+        mountAddressError: bool
+      });
+    });
 
     return _this;
   }
@@ -29778,8 +29873,9 @@ function (_React$Component) {
       }, _react.default.createElement("div", {
         className: "col"
       }, this.state.weatherData ? _react.default.createElement(_ForecastDisplay.default, {
+        locationFound: this.state.locationFound,
         weatherData: this.state.weatherData
-      }) : null)), _react.default.createElement("div", null, _react.default.createElement("button", {
+      }) : this.state.mountAddressError ? _react.default.createElement(_AddressError.default, null) : null)), _react.default.createElement("div", null, _react.default.createElement("button", {
         id: "rerender-btn",
         onClick: function onClick() {
           console.log('\n...rerendering\n');
@@ -29789,9 +29885,11 @@ function (_React$Component) {
           });
         }
       }, " Rerender")), mountFetching ? _react.default.createElement(_WeatherDataRequest.default, {
-        updateWeatherData: this.updateWeatherData,
-        data: address,
-        mountFetching: this.mountFetching
+        address: address,
+        setMountFetching: this.setMountFetching,
+        setLocationFound: this.setLocationFound,
+        setMountAddressError: this.setMountAddressError,
+        updateWeatherData: this.updateWeatherData
       }) : null);
     }
   }]);
@@ -29805,7 +29903,7 @@ _defineProperty(App, "propTypes", {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","isomorphic-fetch":"node_modules/isomorphic-fetch/fetch-npm-browserify.js","../../components/Title":"src/components/Title.js","../../components/AddressInput":"src/components/AddressInput.js","../../components/ForecastDisplay":"src/components/ForecastDisplay.js","../../components/WeatherDataRequest":"src/components/WeatherDataRequest.js","./App.css":"src/containers/App/App.css"}],"src/components/NotFound.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","isomorphic-fetch":"node_modules/isomorphic-fetch/fetch-npm-browserify.js","../../components/Title":"src/components/Title.js","../../components/AddressInput":"src/components/AddressInput.js","../../components/ForecastDisplay":"src/components/ForecastDisplay.js","../../components/AddressError":"src/components/AddressError.js","../../components/WeatherDataRequest":"src/components/WeatherDataRequest.js","./App.css":"src/containers/App/App.css"}],"src/components/NotFound.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29899,7 +29997,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61417" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55584" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
