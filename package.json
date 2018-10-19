@@ -1,0 +1,29 @@
+{
+  "name": "real-time-weather",
+  "version": "1.0.0",
+  "description": "7-day weather forecast",
+  "main": "index.js",
+  "author": "finley.williamson@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "date-fns": "^1.29.0",
+    "isomorphic-fetch": "^2.2.1",
+    "react": ">=15",
+    "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-react": "^7.11.1",
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "start:dev": "parcel index.html"
+  }
+}
