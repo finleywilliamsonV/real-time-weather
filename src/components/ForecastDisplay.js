@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ForecastDay from './ForecastDay';
+import ForecastDay from './ForecastDay/ForecastDay';
 
 /**
  * Display for the 7-day forecast

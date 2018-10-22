@@ -18,7 +18,6 @@ class App extends React.Component {
     mountFetching: false,
     mountAddressError: false,
     weatherData: undefined,
-    renderTest: 0,
   };
 
   static propTypes = {
@@ -98,16 +97,6 @@ class App extends React.Component {
                   : null
             }
           </div>
-        </div>
-
-        {/* Rerender Button */}
-        <div>
-          <button id='rerender-btn'
-            onClick={() => {
-              console.log('\n...rerendering\n');
-              this.setState({ renderTest: this.state.renderTest + 1 });
-            }}
-          > Rerender</button>
         </div>
 
         {/* Get Weather Data From Api */}

@@ -24802,12 +24802,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Written in this round about way for babel-transform-imports
 var _default = _MemoryRouter.default;
 exports.default = _default;
-},{"react-router/es/MemoryRouter":"node_modules/react-router/es/MemoryRouter.js"}],"node_modules/react-router/node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react-router/es/MemoryRouter":"node_modules/react-router/es/MemoryRouter.js"}],"node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],"node_modules/react-router/node_modules/path-to-regexp/index.js":[function(require,module,exports) {
+},{}],"node_modules/path-to-regexp/index.js":[function(require,module,exports) {
 var isarray = require('isarray')
 
 /**
@@ -25235,7 +25235,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":"node_modules/react-router/node_modules/isarray/index.js"}],"node_modules/react-router/es/matchPath.js":[function(require,module,exports) {
+},{"isarray":"node_modules/path-to-regexp/node_modules/isarray/index.js"}],"node_modules/react-router/es/matchPath.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25320,7 +25320,7 @@ var matchPath = function matchPath(pathname) {
 
 var _default = matchPath;
 exports.default = _default;
-},{"path-to-regexp":"node_modules/react-router/node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Route.js":[function(require,module,exports) {
+},{"path-to-regexp":"node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25805,7 +25805,7 @@ var generatePath = function generatePath() {
 
 var _default = generatePath;
 exports.default = _default;
-},{"path-to-regexp":"node_modules/react-router/node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Redirect.js":[function(require,module,exports) {
+},{"path-to-regexp":"node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Redirect.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28436,7 +28436,79 @@ function getDay (dirtyDate) {
 
 module.exports = getDay
 
-},{"../parse/index.js":"node_modules/date-fns/parse/index.js"}],"src/components/ForecastDay.js":[function(require,module,exports) {
+},{"../parse/index.js":"node_modules/date-fns/parse/index.js"}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/ForecastDay/ForecastDay.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/ForecastDay/ForecastDay.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28449,6 +28521,8 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _get_day = _interopRequireDefault(require("date-fns/get_day"));
+
+require("./ForecastDay.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28488,23 +28562,27 @@ function (_React$Component) {
     value: function render() {
       console.log('Forecast Data', this.props.data);
       return _react.default.createElement("div", {
-        className: "col"
+        className: "col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl"
       }, _react.default.createElement("div", {
         className: "card"
       }, _react.default.createElement("div", {
         className: "card-text text-center"
-      }, _react.default.createElement("p", null, this.props.data.icon.replace(/-/g, ' ')), _react.default.createElement("p", null, this.props.data.time), _react.default.createElement("div", {
+      }, _react.default.createElement("h3", null, convertWeekNumberToString((0, _get_day.default)(this.props.data.time))), _react.default.createElement("p", null, this.props.data.time), _react.default.createElement("i", {
+        className: 'icon-' + this.props.data.icon
+      }), _react.default.createElement("div", {
+        id: "icon-text"
+      }, _react.default.createElement("p", null, convertIconStringToDisplayString(this.props.data.icon))), _react.default.createElement("div", {
         className: "container"
       }, _react.default.createElement("div", {
-        className: "row"
+        className: "row",
+        id: "high-low-text"
       }, _react.default.createElement("div", {
-        className: "col-6 text-left"
-      }, Number.parseInt(this.props.data.temperatureLow)), _react.default.createElement("div", {
-        className: "col-6 text-right"
-      }, Number.parseInt(this.props.data.temperatureHigh))))), _react.default.createElement("div", {
-        id: "day-of-week-txt",
-        className: "text-center"
-      }, _react.default.createElement("h3", null, convertWeekNumberToString((0, _get_day.default)(this.props.data.time))))));
+        className: "col-6 text-left",
+        id: "temp-high-text"
+      }, Number.parseInt(this.props.data.temperatureHigh)), _react.default.createElement("div", {
+        className: "col-6 text-right",
+        id: "temp-low-text"
+      }, Number.parseInt(this.props.data.temperatureLow)))))));
     }
   }]);
 
@@ -28540,9 +28618,37 @@ function convertWeekNumberToString(weekNumber) {
   }
 }
 
+function convertIconStringToDisplayString(iconString) {
+  switch (iconString) {
+    case 'clear':
+      return 'Clear';
+
+    case 'rain':
+      return 'Rain';
+
+    case 'snow':
+      return 'Snow';
+
+    case 'sleet':
+      return 'Sleet';
+
+    case 'wind':
+      return 'Wind';
+
+    case 'fog':
+      return 'Fog';
+
+    case 'cloudy':
+      return 'Cloudy';
+
+    case 'partly-cloudy':
+      return 'Partly Cloudy';
+  }
+}
+
 var _default = ForecastDay;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","date-fns/get_day":"node_modules/date-fns/get_day/index.js"}],"src/components/ForecastDisplay.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","date-fns/get_day":"node_modules/date-fns/get_day/index.js","./ForecastDay.css":"src/components/ForecastDay/ForecastDay.css"}],"src/components/ForecastDisplay.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28554,7 +28660,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _ForecastDay = _interopRequireDefault(require("./ForecastDay"));
+var _ForecastDay = _interopRequireDefault(require("./ForecastDay/ForecastDay"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28631,7 +28737,7 @@ _defineProperty(ForecastDisplay, "propTypes", {
 
 var _default = ForecastDisplay;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","./ForecastDay":"src/components/ForecastDay.js"}],"src/components/AddressError.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","./ForecastDay/ForecastDay":"src/components/ForecastDay/ForecastDay.js"}],"src/components/AddressError.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29786,74 +29892,7 @@ function convertTimeStamp(timeStamp) {
 
 var _default = WeatherDataRequest;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","date-fns/format":"node_modules/date-fns/format/index.js"}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/containers/App/App.css":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","date-fns/format":"node_modules/date-fns/format/index.js"}],"src/containers/App/App.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -29931,8 +29970,7 @@ function (_React$Component) {
       locationFound: null,
       mountFetching: false,
       mountAddressError: false,
-      weatherData: undefined,
-      renderTest: 0
+      weatherData: undefined
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setAddressValue", function (add) {
@@ -29994,8 +30032,6 @@ function (_React$Component) {
      * @return {String} html to be rendered
      */
     value: function render() {
-      var _this2 = this;
-
       var _this$state = this.state,
           mountFetching = _this$state.mountFetching,
           address = _this$state.address;
@@ -30020,16 +30056,7 @@ function (_React$Component) {
       }, this.state.weatherData ? _react.default.createElement(_ForecastDisplay.default, {
         locationFound: this.state.locationFound,
         weatherData: this.state.weatherData
-      }) : this.state.mountAddressError ? _react.default.createElement(_AddressError.default, null) : null)), _react.default.createElement("div", null, _react.default.createElement("button", {
-        id: "rerender-btn",
-        onClick: function onClick() {
-          console.log('\n...rerendering\n');
-
-          _this2.setState({
-            renderTest: _this2.state.renderTest + 1
-          });
-        }
-      }, " Rerender")), mountFetching ? _react.default.createElement(_WeatherDataRequest.default, {
+      }) : this.state.mountAddressError ? _react.default.createElement(_AddressError.default, null) : null)), mountFetching ? _react.default.createElement(_WeatherDataRequest.default, {
         address: address,
         setMountFetching: this.setMountFetching,
         setLocationFound: this.setLocationFound,
@@ -30142,7 +30169,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50234" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62458" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

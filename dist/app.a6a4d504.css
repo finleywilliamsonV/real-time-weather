@@ -1,9 +1,76 @@
+#temp-high-text,
+#temp-low-text {
+  padding: 0;
+}
+
+#temp-high-text {
+  color: red;
+}
+
+#temp-low-text {
+  color: blue;
+}
+
+.card {
+  margin-top: 20px;
+  padding: 15px;
+  border: black 1px solid;
+}
+
+@media (min-width: 1200px) { 
+  /* #icon-text */
+}
+
+
+
+
+
+/* ICONS */
+i[class^='icon-'] {
+  font-family: icomoon;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  font-size: 64px;
+  width: 64px;
+}
+
+i.icon-clear::before {
+  content: '\e909';
+}
+
+i.icon-rain::before {
+  content: '\e902';
+}
+
+i.icon-snow::before {
+  content: '\e901';
+}
+
+i.icon-sleet::before {
+  content: '\e900';
+}
+
+i.icon-wind::before {
+  content: '\e90c';
+}
+
+i.icon-fog::before {
+  content: '\e90d';
+}
+
+i.icon-cloudy::before {
+  content: '\e903';
+}
+
+i.icon-partly-cloudy::before {
+  content: '\e906';
+}
 /* #appContainer {
   background-color: red;
 } */
 
 * {
-  border: thistle 1px solid;
+  /* border: thistle 1px solid; */
 }/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
