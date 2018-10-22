@@ -24802,12 +24802,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Written in this round about way for babel-transform-imports
 var _default = _MemoryRouter.default;
 exports.default = _default;
-},{"react-router/es/MemoryRouter":"node_modules/react-router/es/MemoryRouter.js"}],"node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react-router/es/MemoryRouter":"node_modules/react-router/es/MemoryRouter.js"}],"node_modules/react-router/node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],"node_modules/path-to-regexp/index.js":[function(require,module,exports) {
+},{}],"node_modules/react-router/node_modules/path-to-regexp/index.js":[function(require,module,exports) {
 var isarray = require('isarray')
 
 /**
@@ -25235,7 +25235,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":"node_modules/path-to-regexp/node_modules/isarray/index.js"}],"node_modules/react-router/es/matchPath.js":[function(require,module,exports) {
+},{"isarray":"node_modules/react-router/node_modules/isarray/index.js"}],"node_modules/react-router/es/matchPath.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25320,7 +25320,7 @@ var matchPath = function matchPath(pathname) {
 
 var _default = matchPath;
 exports.default = _default;
-},{"path-to-regexp":"node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Route.js":[function(require,module,exports) {
+},{"path-to-regexp":"node_modules/react-router/node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Route.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25805,7 +25805,7 @@ var generatePath = function generatePath() {
 
 var _default = generatePath;
 exports.default = _default;
-},{"path-to-regexp":"node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Redirect.js":[function(require,module,exports) {
+},{"path-to-regexp":"node_modules/react-router/node_modules/path-to-regexp/index.js"}],"node_modules/react-router/es/Redirect.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28066,131 +28066,7 @@ _defineProperty(AddressInput, "propTypes", {
 
 var _default = AddressInput;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"src/components/ForecastDisplay.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/**
- * Display for the 7-day forecast
- */
-var ForecastDisplay =
-/*#__PURE__*/
-function (_React$PureComponent) {
-  _inherits(ForecastDisplay, _React$PureComponent);
-
-  function ForecastDisplay() {
-    _classCallCheck(this, ForecastDisplay);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ForecastDisplay).apply(this, arguments));
-  }
-
-  _createClass(ForecastDisplay, [{
-    key: "render",
-    value: function render() {
-      console.log('\nRendered', this);
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.locationFound), _react.default.createElement("h1", null, "[1] [2] [3] [4] [5] [6] [7]"));
-    }
-  }]);
-
-  return ForecastDisplay;
-}(_react.default.PureComponent);
-
-_defineProperty(ForecastDisplay, "propTypes", {
-  weatherData: _propTypes.default.object,
-  locationFound: _propTypes.default.string
-  /**
-   * Renders the component
-   * @return {String} html to be rendered
-   */
-
-});
-
-var _default = ForecastDisplay;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"src/components/AddressError.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var AddressError =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(AddressError, _React$Component);
-
-  function AddressError() {
-    _classCallCheck(this, AddressError);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(AddressError).apply(this, arguments));
-  }
-
-  _createClass(AddressError, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("h2", null, "INVALID ADDRESS");
-    }
-  }]);
-
-  return AddressError;
-}(_react.default.Component);
-
-var _default = AddressError;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"node_modules/date-fns/is_date/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"node_modules/date-fns/is_date/index.js":[function(require,module,exports) {
 /**
  * @category Common Helpers
  * @summary Is the given argument an instance of Date?
@@ -28534,7 +28410,281 @@ function dayOfISOYear (isoYear, week, day) {
 
 module.exports = parse
 
-},{"../is_date/index.js":"node_modules/date-fns/is_date/index.js"}],"node_modules/date-fns/start_of_year/index.js":[function(require,module,exports) {
+},{"../is_date/index.js":"node_modules/date-fns/is_date/index.js"}],"node_modules/date-fns/get_day/index.js":[function(require,module,exports) {
+var parse = require('../parse/index.js')
+
+/**
+ * @category Weekday Helpers
+ * @summary Get the day of the week of the given date.
+ *
+ * @description
+ * Get the day of the week of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of week
+ *
+ * @example
+ * // Which day of the week is 29 February 2012?
+ * var result = getDay(new Date(2012, 1, 29))
+ * //=> 3
+ */
+function getDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  return day
+}
+
+module.exports = getDay
+
+},{"../parse/index.js":"node_modules/date-fns/parse/index.js"}],"src/components/ForecastDay.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _get_day = _interopRequireDefault(require("date-fns/get_day"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ForecastDay =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ForecastDay, _React$Component);
+
+  function ForecastDay() {
+    _classCallCheck(this, ForecastDay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ForecastDay).apply(this, arguments));
+  }
+
+  _createClass(ForecastDay, [{
+    key: "render",
+    value: function render() {
+      console.log('Forecast Data', this.props.data);
+      return _react.default.createElement("div", {
+        className: "col"
+      }, _react.default.createElement("div", {
+        className: "card"
+      }, _react.default.createElement("div", {
+        className: "card-text text-center"
+      }, _react.default.createElement("p", null, this.props.data.icon.replace(/-/g, ' ')), _react.default.createElement("p", null, this.props.data.time), _react.default.createElement("div", {
+        className: "container"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-6 text-left"
+      }, Number.parseInt(this.props.data.temperatureLow)), _react.default.createElement("div", {
+        className: "col-6 text-right"
+      }, Number.parseInt(this.props.data.temperatureHigh))))), _react.default.createElement("div", {
+        id: "day-of-week-txt",
+        className: "text-center"
+      }, _react.default.createElement("h3", null, convertWeekNumberToString((0, _get_day.default)(this.props.data.time))))));
+    }
+  }]);
+
+  return ForecastDay;
+}(_react.default.Component);
+
+_defineProperty(ForecastDay, "propTypes", {
+  data: _propTypes.default.object.isRequired
+});
+
+function convertWeekNumberToString(weekNumber) {
+  switch (weekNumber) {
+    case 0:
+      return 'SUN';
+
+    case 1:
+      return 'MON';
+
+    case 2:
+      return 'TUES';
+
+    case 3:
+      return 'WED';
+
+    case 4:
+      return 'THU';
+
+    case 5:
+      return 'FRI';
+
+    case 6:
+      return 'SAT';
+  }
+}
+
+var _default = ForecastDay;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","date-fns/get_day":"node_modules/date-fns/get_day/index.js"}],"src/components/ForecastDisplay.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _ForecastDay = _interopRequireDefault(require("./ForecastDay"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * Display for the 7-day forecast
+ */
+var ForecastDisplay =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(ForecastDisplay, _React$PureComponent);
+
+  function ForecastDisplay() {
+    _classCallCheck(this, ForecastDisplay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ForecastDisplay).apply(this, arguments));
+  }
+
+  _createClass(ForecastDisplay, [{
+    key: "render",
+    value: function render() {
+      console.log('\nRendered', this);
+      var _this$props = this.props,
+          weatherData = _this$props.weatherData,
+          locationFound = _this$props.locationFound;
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, locationFound), _react.default.createElement("div", {
+        className: "container"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, Object.keys(weatherData).map(function (key, index) {
+        if (index > 6) {
+          return;
+        } else {
+          return _react.default.createElement(_ForecastDay.default, {
+            key: key,
+            data: weatherData[key]
+          });
+        }
+      }))));
+    }
+  }]);
+
+  return ForecastDisplay;
+}(_react.default.PureComponent);
+
+_defineProperty(ForecastDisplay, "propTypes", {
+  weatherData: _propTypes.default.object.isRequired,
+  locationFound: _propTypes.default.string.isRequired
+  /**
+   * Renders the component
+   * @return {String} html to be rendered
+   */
+
+});
+
+var _default = ForecastDisplay;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","./ForecastDay":"src/components/ForecastDay.js"}],"src/components/AddressError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var AddressError =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AddressError, _React$Component);
+
+  function AddressError() {
+    _classCallCheck(this, AddressError);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AddressError).apply(this, arguments));
+  }
+
+  _createClass(AddressError, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("h2", null, "INVALID ADDRESS");
+    }
+  }]);
+
+  return AddressError;
+}(_react.default.Component);
+
+var _default = AddressError;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"node_modules/date-fns/start_of_year/index.js":[function(require,module,exports) {
 var parse = require('../parse/index.js')
 
 /**
@@ -29530,21 +29680,20 @@ function (_React$Component) {
 
               case 6:
                 json = _context.sent;
-                // CHECK IF ANY VIABLE RESULTS
+                // check if any viable results, if not, set moundAddressError = true
                 console.log('latLong data', json);
 
                 if (!(json.results.length === 0)) {
-                  _context.next = 13;
+                  _context.next = 12;
                   break;
                 }
 
                 this.props.updateWeatherData(null);
                 this.props.setMountAddressError(true);
-                console.log('FAILED');
                 return _context.abrupt("return");
 
-              case 13:
-                // STORE FOUND LOCATION IN STATE
+              case 12:
+                // store found location in state
                 locationFound = json.results[0].formatted;
                 this.props.setLocationFound(locationFound); // extract geometry and pass into fetchWeatherData()
 
@@ -29552,7 +29701,7 @@ function (_React$Component) {
                 geometry = results.geometry && results.geometry.lat && results.geometry.lng && results.geometry;
                 return _context.abrupt("return", this.fetchWeatherData(geometry));
 
-              case 18:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -29592,7 +29741,7 @@ function (_React$Component) {
                   var time = convertTimeStamp(curr.time);
                   acc[time] = {
                     time: time,
-                    icon: curr.icon,
+                    icon: curr.icon.replace(/(-day)|(-night)/, ''),
                     temperatureHigh: curr.temperatureHigh,
                     temperatureLow: curr.temperatureLow
                   };
@@ -29633,11 +29782,7 @@ _defineProperty(WeatherDataRequest, "propTypes", {
 
 function convertTimeStamp(timeStamp) {
   return (0, _format.default)(new Date(timeStamp * 1000), 'MM/DD/YYYY');
-} // function parseAddress(address) {
-//   const parsedAddress = address.split(', ');
-//   console.log(parsedAddress);
-// }
-
+}
 
 var _default = WeatherDataRequest;
 exports.default = _default;
@@ -29805,7 +29950,7 @@ function (_React$Component) {
         locationFound: locationFound
       });
 
-      console.log('LOCATION FOUND:', _this.state.locationFound);
+      console.log('SET STATE - LOCATION FOUND:', _this.state.locationFound);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateWeatherData", function (newData) {
@@ -29813,7 +29958,7 @@ function (_React$Component) {
         weatherData: newData
       });
 
-      console.log(_this.state.weatherData);
+      console.log('SET STATE - WEATHER DATA SET:', _this.state.weatherData);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "fetchLocation", function () {
@@ -29997,7 +30142,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55584" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50234" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

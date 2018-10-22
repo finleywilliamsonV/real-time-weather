@@ -32,12 +32,12 @@ class App extends React.Component {
 
   setLocationFound = locationFound => {
     this.setState({ locationFound });
-    console.log('LOCATION FOUND:', this.state.locationFound);
+    console.log('SET STATE - LOCATION FOUND:', this.state.locationFound);
   }
 
   updateWeatherData = (newData) => {
     this.setState({ weatherData: newData });
-    console.log(this.state.weatherData);
+    console.log('SET STATE - WEATHER DATA SET:', this.state.weatherData);
   }
 
   fetchLocation = () => {

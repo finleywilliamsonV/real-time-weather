@@ -5,6 +5,6 @@ import Router from './components/Router';
 import './styles/normalize';
 
 ReactDOM.render(
-    <Router />,
-    document.querySelector('#app')
+  <Router />,
+  document.querySelector('#app')
 );

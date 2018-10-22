@@ -27,16 +27,15 @@ class WeatherDataRequest extends React.Component {
     const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address}&key=501ef522ca0f4c06ae2b5410168d07eb`);
     const json = await response.json();
 
-    // CHECK IF ANY VIABLE RESULTS
+    // check if any viable results, if not, set moundAddressError = true
     console.log('latLong data', json);
     if (json.results.length === 0) {
       this.props.updateWeatherData(null);
       this.props.setMountAddressError(true);
-      console.log('FAILED');
       return;
     }
 
-    // STORE FOUND LOCATION IN STATE
+    // store found location in state
     const locationFound = json.results[ 0 ].formatted;
     this.props.setLocationFound(locationFound);
 
@@ -62,7 +61,7 @@ class WeatherDataRequest extends React.Component {
 
       acc[ time ] = {
         time: time,
-        icon: curr.icon,
+        icon: curr.icon.replace(/(-day)|(-night)/, ''),
         temperatureHigh: curr.temperatureHigh,
         temperatureLow: curr.temperatureLow,
       };
@@ -82,10 +81,5 @@ class WeatherDataRequest extends React.Component {
 function convertTimeStamp(timeStamp) {
   return formatDateFns(new Date(timeStamp * 1000), 'MM/DD/YYYY');
 }
-
-// function parseAddress(address) {
-//   const parsedAddress = address.split(', ');
-//   console.log(parsedAddress);
-// }
 
 export default WeatherDataRequest;
