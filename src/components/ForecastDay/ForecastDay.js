@@ -7,7 +7,6 @@ import './ForecastDay.css';
 class ForecastDay extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
-    key: PropTypes.number.isRequired,
   };
 
   render() {
