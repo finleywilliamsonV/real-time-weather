@@ -53,15 +53,22 @@ class ForecastDay extends React.Component {
 }
 
 function convertWeekNumberToString(weekNumber) {
-  switch (Number.parseInt(weekNumber)) {
-  case 0: return 'SUN';
-  case 1: return 'MON';
-  case 2: return 'TUE';
-  case 3: return 'WED';
-  case 4: return 'THU';
-  case 5: return 'FRI';
-  case 6: return 'SAT';
-  default: return 'ASS';
+  if (weekNumber === 0 || weekNumber === '0') {
+    return 'SUN';
+  } else if (weekNumber === 1 || weekNumber === '1') {
+    return 'MON';
+  } else if (weekNumber === 2 || weekNumber === '2') {
+    return 'TUE';
+  } else if (weekNumber === 3 || weekNumber === '3') {
+    return 'WED';
+  } else if (weekNumber === 4 || weekNumber === '4') {
+    return 'THU';
+  } else if (weekNumber === 5 || weekNumber === '5') {
+    return 'FRI';
+  } else if (weekNumber === 6 || weekNumber === '6') {
+    return 'SAT';
+  } else {
+    return 'SHI';
   }
 }
 
