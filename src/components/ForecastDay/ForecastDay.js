@@ -53,7 +53,7 @@ class ForecastDay extends React.Component {
 }
 
 function convertWeekNumberToString(weekNumber) {
-  switch (weekNumber) {
+  switch (Number.parseInt(weekNumber)) {
   case 0: return 'SUN';
   case 1: return 'MON';
   case 2: return 'TUE';
