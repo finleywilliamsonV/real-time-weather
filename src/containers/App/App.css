@@ -1,13 +1,15 @@
-/* #appContainer {
-  background-color: red;
-} */
-
-* * * * * * * {
+* {
   /* border: thistle 1px solid; */
   font-family: neue-haas-unica, sans-serif;
   font-weight: 250;
+  font-size: 16px;
 }
 
 #forecast-col {
   padding: 0 15px;
 }
+
+/* #title-col,
+#address-input-col {
+  padding: 0;
+} */

@@ -79,7 +79,7 @@ class WeatherDataRequest extends React.Component {
 }
 
 function convertTimeStamp(timeStamp) {
-  return formatDateFns(new Date(timeStamp * 1000), 'MM/DD/YYYY');
+  return formatDateFns(new Date(timeStamp * 1000), 'MM/DD');
 }
 
 export default WeatherDataRequest;

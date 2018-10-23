@@ -15,11 +15,11 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div id='search-bar-div' className='container-fluid'>
-        <div className="row d-flex align-items-center">
-          <div className="col-12 col-md-6">
+        <div id='search-bar-row' className="row d-flex align-items-center">
+          <div id='title-col' className="col-12 col-md-6">
             <Title />
           </div>
-          <div className="col-12 col-md-6">
+          <div id='address-input-col' className="col-12 col-md-6">
             <AddressInput
               setAddressValue={this.props.setAddressValue}
               fetchLocation={this.props.fetchLocation}

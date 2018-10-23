@@ -9,6 +9,14 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
+  #search-bar-row {
+    /* max-width: 540px; */
+  }
+}
 
+@media (min-width: 768px) {
+  #search-bar-row {
+    /* max-width: 720px; */
+  }
 }

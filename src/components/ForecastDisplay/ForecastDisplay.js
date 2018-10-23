@@ -22,10 +22,12 @@ class ForecastDisplay extends React.PureComponent {
     return (
       <div id='forecast-outer-container' className='container-fluid p-0'>
         <div id='forecast-container' className='container'>
-          <div id='forecast-row' className='row'>
-            <div className="col-12">
+          <div id='location-found-row' className='row'>
+            <div id='location-found-col' className="col-12">
               <h3 id='location-found-txt'>{locationFound}</h3>
             </div>
+          </div>
+          <div id="forecast-display-row" className='row'>
             {
               Object.keys(weatherData).map((key, index) => {
                 if (index > 6) {
