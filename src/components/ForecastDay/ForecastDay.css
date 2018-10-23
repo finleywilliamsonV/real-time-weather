@@ -12,13 +12,19 @@
 }
 
 .card {
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 15px;
   border: black 1px solid;
 }
 
-@media (min-width: 1200px) { 
-  /* #icon-text */
+@media (min-width: 0px) { 
+  .forecast-col {
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+
 }
 
 

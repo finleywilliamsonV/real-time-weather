@@ -1,0 +1,14 @@
+#search-bar-div {
+  background-color: #08bae8;
+}
+
+
+@media (min-width: 0px) {
+  #search-bar-div {
+    padding: 40px 15px;
+  }
+}
+
+@media (min-width: 768px) {
+
+}

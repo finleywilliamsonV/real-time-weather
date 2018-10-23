@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './AddressInput.css';
+
 
 class AddressInput extends React.PureComponent {
   static propTypes = {
@@ -22,10 +24,10 @@ class AddressInput extends React.PureComponent {
   render() {
     console.log('\nRendered', this);
     return (
-      <h1>Enter Address:
-        <input onChange={this.onChange}></input>
-        <button onClick={this.onClick}>GO</button>
-      </h1>);
+      <div id='address-input-div' className='input-group'>
+        <input id='address-input' placeholder='Search address, city, etc...' className='form-control' onChange={this.onChange}></input>
+        <button id='address-submit-btn' className='btn' onClick={this.onClick}>Go</button>
+      </div>);
   }
 }
 

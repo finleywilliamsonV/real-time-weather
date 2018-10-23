@@ -1,0 +1,14 @@
+#location-found-txt {
+  font-weight: 250;
+  /* margin: 20px 8px; */
+}
+
+@media (min-width: 0px) {
+  #location-found-txt {
+    margin: 20px 10px 20px 0px;
+  }
+}
+
+@media (min-width: 768px) {
+
+}

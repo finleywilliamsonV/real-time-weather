@@ -1,0 +1,23 @@
+#heading-div {
+  color: white;
+}
+
+#main-heading-txt {
+  font-weight: 700;
+}
+
+#sub-heading-txt {
+  margin: -6px 0 0 0;
+}
+
+@media (min-width: 0px) {
+  #heading-div {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  #heading-div {
+    margin-left: 0px;
+  }
+}

@@ -7,12 +7,13 @@ import './ForecastDay.css';
 class ForecastDay extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    key: PropTypes.number.isRequired,
   };
 
   render() {
     console.log('Forecast Data', this.props.data);
     return (
-      <div className='col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl'>
+      <div className='col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl forecast-col'>
         <div className='card'>
           <div className='card-text text-center'>
             <h3>
