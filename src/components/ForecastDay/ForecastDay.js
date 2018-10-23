@@ -61,6 +61,7 @@ function convertWeekNumberToString(weekNumber) {
   case 4: return 'THU';
   case 5: return 'FRI';
   case 6: return 'SAT';
+  default: return 'ASS';
   }
 }
 
