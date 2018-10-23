@@ -7,33 +7,45 @@ import './ForecastDay.css';
 class ForecastDay extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    key: PropTypes.number.isRequired,
   };
 
   render() {
     console.log('Forecast Data', this.props.data);
     return (
-      <div className='col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl'>
-        <div className='card'>
-          <div className='card-text text-center'>
-            <h3>
-              {convertWeekNumberToString(getDayFns(this.props.data.time))}
-            </h3>
-            <p>{this.props.data.time}</p>
-            <i className={'icon-' + this.props.data.icon}></i>
-            <div id="icon-text">
-              <p>{convertIconStringToDisplayString(this.props.data.icon)}</p>
+      <div className='col-xs-12 col-sm-4 col-md-3 col-lg col-xl forecast-col'>
+        <div className='container-fluid weather-card text-center'>
+
+          <div className="row d-flex align-items-center forecast-day-row m-0">
+
+            <div className="col col-sm-12 weekday-col">
+              <div className='weekday-txt'>
+                {convertWeekNumberToString(getDayFns(this.props.data.time))}
+              </div>
+              <div className='date-txt'>{this.props.data.time}</div>
             </div>
-            <div className='container'>
-              <div className='row' id='high-low-text'>
-                <div className='col-6 text-left' id='temp-high-text'>
-                  {Number.parseInt(this.props.data.temperatureHigh)}
-                </div>
-                <div className='col-6 text-right' id='temp-low-text'>
-                  {Number.parseInt(this.props.data.temperatureLow)}
-                </div>
+
+            <div className="col col-sm-12 icon-col">
+              <i className={'icon-' + this.props.data.icon + ' icon-img'}></i>
+              <div className="icon-txt-div">
+                <div className='icon-txt'>{convertIconStringToDisplayString(this.props.data.icon)}</div>
               </div>
             </div>
+
+            <div className="col col-sm-12 temp-col">
+              <div className='high-low-div'>
+                <span className='temp-high-txt'>
+                  {Number.parseInt(this.props.data.temperatureHigh)}
+                </span>
+                <span className='temp-low-txt'>
+                  <span className='slash-txt'> / </span>
+                  {Number.parseInt(this.props.data.temperatureLow)}
+                </span>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
     );
@@ -44,7 +56,7 @@ function convertWeekNumberToString(weekNumber) {
   switch (weekNumber) {
   case 0: return 'SUN';
   case 1: return 'MON';
-  case 2: return 'TUES';
+  case 2: return 'TUE';
   case 3: return 'WED';
   case 4: return 'THU';
   case 5: return 'FRI';

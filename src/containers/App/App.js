@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import 'regenerator-runtime/runtime';
 import 'isomorphic-fetch';
 
-import Title from '../../components/Title';
-import AddressInput from '../../components/AddressInput';
-import ForecastDisplay from '../../components/ForecastDisplay';
+import ForecastDisplay from '../../components/ForecastDisplay/ForecastDisplay';
 import AddressError from '../../components/AddressError';
 import WeatherDataRequest from '../../components/WeatherDataRequest';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
+import '../../styles/normalize.css';
 import './App.css';
 
 class App extends React.Component {
@@ -65,26 +65,36 @@ class App extends React.Component {
     return (
       <div id='appContainer' className='container-fluid'>
 
-        {/* Title Row */}
+        {/* Search Bar Row */}
         <div className='row'>
-          <div className='col'>
-            <Title />
-          </div>
-        </div>
-
-        {/* Zipcode Input Row */}
-        <div className='row'>
-          <div className='col'>
-            <AddressInput
+          <div className='col p-0'>
+            <SearchBar
               setAddressValue={this.setAddressValue}
               fetchLocation={this.fetchLocation}
             />
           </div>
         </div>
 
-        {/* Forecast Row */}
-        <div className='row'>
+        {/* Title Row */}
+        {/* <div className='row'>
           <div className='col'>
+            <Title />
+          </div>
+        </div> */}
+
+        {/* Zipcode Input Row */}
+        {/* <div className='row'>
+          <div className='col'>
+            <AddressInput
+              setAddressValue={this.setAddressValue}
+              fetchLocation={this.fetchLocation}
+            />
+          </div>
+        </div> */}
+
+        {/* Forecast Row */}
+        <div id='forecast-row' className='row'>
+          <div id='forecast-col' className='col'>
             {
               this.state.weatherData ?
                 <ForecastDisplay
