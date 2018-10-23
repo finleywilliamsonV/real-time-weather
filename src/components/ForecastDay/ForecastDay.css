@@ -1,7 +1,7 @@
 .weather-card {
   margin-top: 5px;
   margin-bottom: 5px;
-  padding: 10px 15px;
+  padding: 15px 15px 5px;
   border-radius: 20px;
   background-color: #08bae8;
   color: white;
