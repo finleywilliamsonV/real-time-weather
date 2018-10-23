@@ -17,7 +17,6 @@ class ForecastDisplay extends React.PureComponent {
    * @return {String} html to be rendered
    */
   render() {
-    console.log('\nRendered', this);
     const { weatherData, locationFound } = this.props;
     return (
       <div id='forecast-outer-container' className='container-fluid p-0'>

@@ -11,7 +11,6 @@ class ForecastDay extends React.Component {
   };
 
   render() {
-    console.log('Forecast Data', this.props.data);
     return (
       <div className='col-xs-12 col-sm-4 col-md-3 col-lg col-xl forecast-col'>
         <div className='container-fluid weather-card text-center'>
@@ -28,7 +27,9 @@ class ForecastDay extends React.Component {
             <div className="col col-sm-12 icon-col">
               <i className={'icon-' + this.props.data.icon + ' icon-img'}></i>
               <div className="icon-txt-div">
-                <div className='icon-txt'>{convertIconStringToDisplayString(this.props.data.icon)}</div>
+                <div className='icon-txt'>
+                  {convertIconStringToDisplayString(this.props.data.icon)}
+                </div>
               </div>
             </div>
 

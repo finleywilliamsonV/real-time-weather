@@ -28,7 +28,6 @@ class WeatherDataRequest extends React.Component {
     const json = await response.json();
 
     // check if any viable results, if not, set moundAddressError = true
-    console.log('latLong data', json);
     if (json.results.length === 0) {
       this.props.updateWeatherData(null);
       this.props.setMountAddressError(true);
@@ -53,7 +52,6 @@ class WeatherDataRequest extends React.Component {
       await fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/27fa7afbec463b30b5c6c636974e6ba7/${lat},${lng}`);
 
     const json = await response.json();
-    console.log('weather data', json);
     const results = (json.daily && json.daily.data) && json.daily.data;
 
     const normalizedData = results.reduce((acc, curr) => {
@@ -73,7 +71,6 @@ class WeatherDataRequest extends React.Component {
   }
 
   render() {
-    console.log('\nRendered', this);
     return null;
   }
 }

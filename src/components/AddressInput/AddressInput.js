@@ -22,11 +22,22 @@ class AddressInput extends React.PureComponent {
   }
 
   render() {
-    console.log('\nRendered', this);
     return (
       <div id='address-input-div' className='input-group'>
-        <input id='address-input' placeholder='Search address, city, etc...' className='form-control' onChange={this.onChange}></input>
-        <button id='address-submit-btn' className='btn' onClick={this.onClick}>Go</button>
+
+        <input
+          id='address-input'
+          placeholder='Search address, city, etc...'
+          className='form-control'
+          onChange={this.onChange}
+        ></input>
+
+        <button
+          id='address-submit-btn'
+          className='btn'
+          onClick={this.onClick}
+        >Go</button>
+
       </div>);
   }
 }

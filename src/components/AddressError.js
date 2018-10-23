@@ -3,7 +3,13 @@ import React from 'react';
 class AddressError extends React.Component {
   render() {
     return (
-      <h2>INVALID ADDRESS</h2>
+      <div
+        id='invalid-address-alert'
+        className="alert alert-danger"
+        role="alert"
+      >
+        Invalid address! Please try again.
+      </div>
     );
   }
 }

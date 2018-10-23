@@ -11,7 +11,6 @@ class Title extends React.PureComponent {
    * @return {String} html to be rendered
    */
   render() {
-    console.log('\nRendered', this);
     return (
       <div id='heading-div'>
         <h1 id='main-heading-txt' className='m-0'>Real-Time Weather</h1>

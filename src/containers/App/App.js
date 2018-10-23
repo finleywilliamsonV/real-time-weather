@@ -31,20 +31,14 @@ class App extends React.Component {
 
   setLocationFound = locationFound => {
     this.setState({ locationFound });
-    console.log('SET STATE - LOCATION FOUND:', this.state.locationFound);
   }
 
   updateWeatherData = (newData) => {
     this.setState({ weatherData: newData });
-    console.log('SET STATE - WEATHER DATA SET:', this.state.weatherData);
   }
 
   fetchLocation = () => {
-    const { address } = this.state;
-
-    if (address.length >= 4) {
-      this.setState({ mountFetching: true });
-    }
+    this.setState({ mountFetching: true });
   }
 
   setMountFetching = bool => {
@@ -75,23 +69,6 @@ class App extends React.Component {
           </div>
         </div>
 
-        {/* Title Row */}
-        {/* <div className='row'>
-          <div className='col'>
-            <Title />
-          </div>
-        </div> */}
-
-        {/* Zipcode Input Row */}
-        {/* <div className='row'>
-          <div className='col'>
-            <AddressInput
-              setAddressValue={this.setAddressValue}
-              fetchLocation={this.fetchLocation}
-            />
-          </div>
-        </div> */}
-
         {/* Forecast Row */}
         <div id='forecast-row' className='row'>
           <div id='forecast-col' className='col'>
@@ -103,7 +80,7 @@ class App extends React.Component {
                 />
 
                 : this.state.mountAddressError ?
-                  <AddressError />
+                  <AddressError/>
                   : null
             }
           </div>
