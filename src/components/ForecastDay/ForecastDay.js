@@ -18,9 +18,9 @@ class ForecastDay extends React.Component {
 
             <div className="col col-sm-12 weekday-col">
               <div className='weekday-txt'>
-                {convertWeekNumberToString(getDayFns(this.props.data.time))}
+                {convertWeekNumberToString(this.props.data.time)}
               </div>
-              <div className='date-txt'>{this.props.data.time}</div>
+              <div className='date-txt'>{this.props.data.time.slice(0, this.props.data.time.length - 5)}</div>
             </div>
 
             <div className="col col-sm-12 icon-col">
@@ -53,23 +53,18 @@ class ForecastDay extends React.Component {
 }
 
 function convertWeekNumberToString(weekNumber) {
-  if (weekNumber === 0 || weekNumber === '0') {
-    return 'SUN';
-  } else if (weekNumber === 1 || weekNumber === '1') {
-    return 'MON';
-  } else if (weekNumber === 2 || weekNumber === '2') {
-    return 'TUE';
-  } else if (weekNumber === 3 || weekNumber === '3') {
-    return 'WED';
-  } else if (weekNumber === 4 || weekNumber === '4') {
-    return 'THU';
-  } else if (weekNumber === 5 || weekNumber === '5') {
-    return 'FRI';
-  } else if (weekNumber === 6 || weekNumber === '6') {
-    return 'SAT';
-  } else {
-    return 'SHI';
-  }
+  const int = parseInt(getDayFns(weekNumber));
+  const map = {
+    0: 'SUN',
+    1: 'MON',
+    2: 'TUE',
+    3: 'WED',
+    4: 'THU',
+    5: 'FRI',
+    6: 'SAT',
+  };
+
+  return map[ int ];
 }
 
 function convertIconStringToDisplayString(iconString) {

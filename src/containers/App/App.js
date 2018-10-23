@@ -8,7 +8,6 @@ import AddressError from '../../components/AddressError';
 import WeatherDataRequest from '../../components/WeatherDataRequest';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-import '../../styles/normalize.css';
 import './App.css';
 
 class App extends React.Component {
