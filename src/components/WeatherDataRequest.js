@@ -24,7 +24,7 @@ class WeatherDataRequest extends React.Component {
   async fetchLatLong() {
     const address = encodeURIComponent(this.props.address);
 
-    const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address}&key=501ef522ca0f4c06ae2b5410168d07eb`);
+    const response = await fetch(`/api/lat-long/${address}`);
     const json = await response.json();
 
     // check if any viable results, if not, set moundAddressError = true
@@ -48,8 +48,7 @@ class WeatherDataRequest extends React.Component {
   }
 
   async fetchWeatherData({ lat, lng }) {
-    const response =
-      await fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/27fa7afbec463b30b5c6c636974e6ba7/${lat},${lng}`);
+    const response = await fetch(`/api/weather/${lat},${lng}`);
 
     const json = await response.json();
     const results = (json.daily && json.daily.data) && json.daily.data;
