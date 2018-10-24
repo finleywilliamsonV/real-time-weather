@@ -24,7 +24,7 @@ class WeatherDataRequest extends React.Component {
   async fetchLatLong() {
     const address = encodeURIComponent(this.props.address);
 
-    const response = await fetch(`/api/lat-long/${address}`);
+    const response = await fetch(`http://localhost:5000/api/lat-long/${address}`);
     const json = await response.json();
 
     // check if any viable results, if not, set moundAddressError = true
@@ -48,7 +48,7 @@ class WeatherDataRequest extends React.Component {
   }
 
   async fetchWeatherData({ lat, lng }) {
-    const response = await fetch(`/api/weather/${lat},${lng}`);
+    const response = await fetch(`http://localhost:5000/api/weather/${lat},${lng}`);
 
     const json = await response.json();
     const results = (json.daily && json.daily.data) && json.daily.data;
