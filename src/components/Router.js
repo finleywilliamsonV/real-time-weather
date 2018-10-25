@@ -7,8 +7,6 @@ import NotFound from '../components/NotFound';
 const Router = () => (
   <BrowserRouter>
     <Switch>
-
-      
       <Route exact path='/' component={App} />
       <Route exact path='/weather/' component={App} />
       <Route component={NotFound} />
